@@ -1,12 +1,30 @@
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MainLayout } from "./container/MainLayout";
+import { Main } from "./views/Movies-Components/Main";
 
-import './App.css';
 
-function App() {
+export const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainLayout />,
+
+      children: [
+        {
+          path: ``,
+          element: <Main />,
+        },
+      ],
+    },
+  ]);
   return (
-    <div >
- Movies App
+    <div>
+      <React.StrictMode>
+        <RouterProvider router={router}></RouterProvider>
+      </React.StrictMode>
     </div>
   );
-}
+};
 
-export default App;
+
