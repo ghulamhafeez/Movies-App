@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-export const Cards = () => {
+export const StatCards = () => {
   return (
     <Grid item container pr={25} pt={3} gap={5} direction={"column"}>
       <Grid item>

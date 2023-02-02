@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import { Cards } from "../views/Movies-Components/Cards";
+import { StatCards } from "../views/Movies-Components/StatCards";
 import { Sidebar } from "../views/Movies-Components/Sidebar";
 import { SearchBar } from "../views/Movies-Components/SearchBar";
 import { Contents } from "../container/Contents";
@@ -18,7 +18,7 @@ export const MainLayout = () => {
           <Contents />
         </Grid>
         <Grid item direction={"column"}>
-          <Cards />
+          <StatCards />
         </Grid>
       </Grid>
     </Grid>
