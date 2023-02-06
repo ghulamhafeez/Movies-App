@@ -1,8 +1,12 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainLayout } from "./container/MainLayout";
-import { Main } from "./views/Movies-Components/Main";
-
+import { Home } from "./views/Movies-Components/Home";
+import { MoviesDetail } from "./views/Movies-Components/MoviesDetail";
+import { UpcommingMovies } from "./views/Movies-Components/UpcommingMovies";
+import { PopularMovies } from "./views/Movies-Components/PopularMovies";
+import { store } from "./store/Store";
+import { Provider } from "react-redux";
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -13,7 +17,20 @@ export const App = () => {
       children: [
         {
           path: ``,
-          element: <Main />,
+          element: <Home />,
+        },
+        {
+          path: `/popular-movies`,
+          element: <PopularMovies />,
+        },
+        {
+          path: `/upcomming-movies`,
+          element: <UpcommingMovies />,
+        },
+
+        {
+          path: `/movies-detail/:id`,
+          element: <MoviesDetail />,
         },
       ],
     },
@@ -21,10 +38,10 @@ export const App = () => {
   return (
     <div>
       <React.StrictMode>
-        <RouterProvider router={router}></RouterProvider>
+        <Provider store={store}>
+          <RouterProvider router={router}></RouterProvider>
+        </Provider>
       </React.StrictMode>
     </div>
   );
 };
-
-

@@ -6,15 +6,15 @@ import { SearchBar } from "../views/Movies-Components/SearchBar";
 import { Contents } from "../container/Contents";
 export const MainLayout = () => {
   return (
-    <Grid container bgcolor={"black"} height={450} >
-      <Grid item container  direction={"row"} pb={0}>
+    <Grid container bgcolor={"black"}  >
+      <Grid item container pb={0} >
         <SearchBar />
       </Grid>
-      <Grid item container display={"flex"} direction={"row"} justifyContent={"space-between"} pt={0}>
+      <Grid item container direction={"row"} justifyContent={"space-between"} pt={0}>
         <Grid item direction={"column"}>
           <Sidebar />
         </Grid>
-        <Grid item direction={"column"} pr={60}>
+        <Grid item >
           <Contents />
         </Grid>
         <Grid item direction={"column"}>
