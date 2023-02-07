@@ -9,7 +9,7 @@ import { first_path } from "./Constants";
 
 import { useGetPopularMoviesQuery } from "../../services/MovieServices";
 export const Home = () => {
-  const { data } = useGetPopularMoviesQuery();
+  const { data =[]} = useGetPopularMoviesQuery();
 
   return (
     <Grid item pt={3} width={500}>

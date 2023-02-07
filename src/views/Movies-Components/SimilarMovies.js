@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { first_path } from "./Constants";
 import { useGetSimilarMoviesQuery } from "../../services/MovieServices";
 export const SimilarMovies = () => {
-  const { data } = useGetSimilarMoviesQuery();
+  const {  data =[] } = useGetSimilarMoviesQuery();
   return (
     <Grid item display={"flex"} sx={{ flex: "wrap", gap: 2 }}>
       <Typography

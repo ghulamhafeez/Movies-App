@@ -14,7 +14,7 @@ import { Grid } from "@mui/material";
 
 export const StatCards = () => {
   const navigate = useNavigate();
-  const { data } = useGetPopularMoviesQuery();
+  const {  data =[] } = useGetPopularMoviesQuery();
   const { data: UpCommingData = [] } = useGetUpCommingMoviesQuery();
 
   const redirectToPopular = () => {
@@ -92,12 +92,6 @@ export const StatCards = () => {
               return (
                 <Card sx={{ width: 300, bgcolor: "#3B3B3B", borderRadius: 3 }}>
                   <CardContent sx={{ display: "flex" }}>
-                    {/* <CardMedia
-                      component="img"
-                      height={20}
-                      image="https://s3.amazonaws.com/static.rogerebert.com/uploads/movie/movie_poster/the-twin-2022/large_the-twin-movie-poster-2022.jpeg"
-                      alt="green iguana"
-                    /> */}
                     <Typography
                       sx={{
                         fontSize: 12,

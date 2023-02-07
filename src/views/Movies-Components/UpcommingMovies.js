@@ -8,7 +8,7 @@ import { CardActionArea } from "@mui/material";
 import { useGetUpCommingMoviesQuery } from "../../services/MovieServices";
 import { first_path } from "./Constants";
 export const UpcommingMovies = () => {
-  const { data } = useGetUpCommingMoviesQuery();
+  const {  data =[] } = useGetUpCommingMoviesQuery();
 
   return (
     <Grid item display={"flex"} sx={{ flex: "wrap", gap: 2, width: 500 }}>

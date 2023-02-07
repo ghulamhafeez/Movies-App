@@ -6,7 +6,7 @@ import { useGetFindMoviesQuery } from "../../services/MovieServices";
 import { Navigate } from "react-router-dom";
 export const SearchBar = () => {
   const [autoCompleteValue, setAutoCompleteValue] = useState();
-  const { data } = useGetFindMoviesQuery(autoCompleteValue);
+  const {  data =[] } = useGetFindMoviesQuery(autoCompleteValue);
 
   const handleRedirect = (id) => {
     Navigate(`/movies-detail/${id}`);

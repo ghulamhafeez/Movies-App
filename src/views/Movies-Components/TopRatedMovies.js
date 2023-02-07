@@ -12,7 +12,7 @@ import { CardActionArea } from "@mui/material";
 import { useGetTopRatedMoviesQuery } from "../../services/MovieServices";
 import { first_path } from "./Constants";
 export const TopRatedMovies = () => {
-  const { data } = useGetTopRatedMoviesQuery();
+  const {  data =[] } = useGetTopRatedMoviesQuery();
 
   return (
     <Grid item sx={{ gap: 2 }} width={500}>

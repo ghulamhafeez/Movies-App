@@ -8,7 +8,7 @@ import { CardActionArea } from "@mui/material";
 import {first_path} from "./Constants"
 import { useGetPopularMoviesQuery } from "../../services/MovieServices";
 export const PopularMovies = () => {
-  const { data } = useGetPopularMoviesQuery();
+  const {  data =[] } = useGetPopularMoviesQuery();
 
   return (
     <Grid item display={"flex"} sx={{  gap: 2 ,width:500}}>
