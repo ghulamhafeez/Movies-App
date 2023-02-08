@@ -6,13 +6,19 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { first_path } from "./Constants";
-
+import { useNavigate } from "react-router-dom";
 import { useGetPopularMoviesQuery } from "../../services/MovieServices";
 export const Home = () => {
-  const { data =[]} = useGetPopularMoviesQuery();
+  const { data =[] } = useGetPopularMoviesQuery();
+
+const navigate = useNavigate();
+  const handleRedirect = (id) => {
+    
+    navigate(`/movies-detail/${id}`);
+  };
 
   return (
-    <Grid item pt={3} width={500}>
+    <Grid item pt={3} width={525}>
       <Swiper navigation={true} modules={[Navigation]}>
         {data?.results?.map((x) => {
           return (
@@ -21,8 +27,9 @@ export const Home = () => {
               <img
                 src={first_path + x.poster_path}
                 alt="img"
-                width="500"
+                width="525"
                 height="350"
+                onClick={()=>handleRedirect(x.id)}
               />
             </SwiperSlide>
           );

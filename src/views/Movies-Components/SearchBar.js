@@ -7,8 +7,9 @@ import { Navigate } from "react-router-dom";
 export const SearchBar = () => {
   const [autoCompleteValue, setAutoCompleteValue] = useState();
   const {  data =[] } = useGetFindMoviesQuery(autoCompleteValue);
-
+console.log("dataSear",data)
   const handleRedirect = (id) => {
+    console.log("id",id)
     Navigate(`/movies-detail/${id}`);
   };
   return (
@@ -20,7 +21,7 @@ export const SearchBar = () => {
         disableClearable
         options={data?.results || []}
         getOptionLabel={(option) => (option?.title ? option?.title : "")}
-        onChange={(option) => handleRedirect(option?.id)}
+        onChange={(option) => handleRedirect(option.id)}
         renderInput={(params) => (
           <TextField
             {...params}
