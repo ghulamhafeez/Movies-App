@@ -1,51 +1,27 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { useGetUpCommingMoviesQuery } from "../../services/MovieServices";
+import CardMedia from "@mui/material/CardMedia";
 import { first_path } from "./Constants";
-import { useNavigate } from "react-router-dom";
-export const UpcommingMovies = () => {
-  const { data =[] ,isLoading} = useGetUpCommingMoviesQuery();
-  const navigate = useNavigate();
-  const handleRedirect = (id) => {
-
-    navigate(`/movies-detail/${id}`);
-  };
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+import Typography from "@mui/material/Typography";
+export const MovieSwiper = ({data , handleRedirect}) => {
   return (
-    <Grid item sx={{ width: 525 ,pt:2}}>
-
-    
-        <Typography
-          sx={{
-            fontSize: 16,
-            textAlign: "left",
-            color: "#046565",
-
-            fontWeight: "bold",
-          }}
-        >
-          Upcomming Movies
-        </Typography>
-      
-        <Grid sx={{ display: "flex", flexWrap: "wrap" , gap: 2 }}>
-      {data?.results.map((x) => {
+    <Swiper navigation={true} modules={[Navigation]} slidesPerView={4}>
+      {data?.results?.map((x) => {
         return (
-   
-   
-            <Card onClick={() => handleRedirect(x.id)} sx={{ width: 150 }}>
+          <SwiperSlide className="shrink">
+            <Card sx={{ width: 140 }} onClick={() => handleRedirect(x)}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="200"
                   image={first_path + x.poster_path}
-                  alt="img"
+                  alt="green iguana"
                 />
                 <CardContent
                   sx={{ backgroundColor: "#2E2F2F", minHeight: 125 }}
@@ -53,7 +29,7 @@ export const UpcommingMovies = () => {
                   <Typography
                     sx={{
                       fontSize: 14,
-                      textAlign: "left",
+                      textAlign: "center",
                       color: "#046565",
                       fontWeight: "bold",
                     }}
@@ -63,7 +39,7 @@ export const UpcommingMovies = () => {
                   <Typography
                     sx={{
                       fontSize: 12,
-                      textAlign: "left",
+                      textAlign: "center",
                       color: "White",
                       fontWeight: "bold",
                     }}
@@ -73,11 +49,9 @@ export const UpcommingMovies = () => {
                 </CardContent>
               </CardActionArea>
             </Card>
-         
-        )
-        
+          </SwiperSlide>
+        );
       })}
-      </Grid>
-    </Grid>
+    </Swiper>
   );
 };
