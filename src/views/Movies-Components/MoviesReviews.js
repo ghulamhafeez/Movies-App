@@ -21,7 +21,7 @@ export const MoviesReviews = () => {
       </Typography>
 
       {data?.results?.slice(0, 3).map((x) => {
-        console.log("x", x);
+
         return (
           <>
             <Typography

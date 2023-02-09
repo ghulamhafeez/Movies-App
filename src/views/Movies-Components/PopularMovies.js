@@ -9,11 +9,15 @@ import { first_path } from "./Constants";
 import { useNavigate } from "react-router-dom";
 import { useGetPopularMoviesQuery } from "../../services/MovieServices";
 export const PopularMovies = () => {
-  const { data = [] } = useGetPopularMoviesQuery();
+  const { data = [] ,isLoading} = useGetPopularMoviesQuery();
   const navigate = useNavigate();
   const handleRedirect = (id) => {
     navigate(`/movies-detail/${id}`);
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Grid item sx={{ width: 525 ,pt:2}}>
 

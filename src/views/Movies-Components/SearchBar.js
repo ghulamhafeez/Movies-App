@@ -3,14 +3,13 @@ import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useGetFindMoviesQuery } from "../../services/MovieServices";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const SearchBar = () => {
   const [autoCompleteValue, setAutoCompleteValue] = useState();
-  const {  data =[] } = useGetFindMoviesQuery(autoCompleteValue);
-console.log("dataSear",data)
+  const { data = [] } = useGetFindMoviesQuery(autoCompleteValue);
+  const navigate = useNavigate();
   const handleRedirect = (id) => {
-    console.log("id",id)
-    Navigate(`/movies-detail/${id}`);
+    navigate(`/movies-detail/${id}`);
   };
   return (
     <Grid item pt={1}>
@@ -21,7 +20,7 @@ console.log("dataSear",data)
         disableClearable
         options={data?.results || []}
         getOptionLabel={(option) => (option?.title ? option?.title : "")}
-        onChange={(option) => handleRedirect(option.id)}
+        onChange={(option, value) => handleRedirect(value.id)}
         renderInput={(params) => (
           <TextField
             {...params}

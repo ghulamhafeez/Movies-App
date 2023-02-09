@@ -9,12 +9,15 @@ import { useGetUpCommingMoviesQuery } from "../../services/MovieServices";
 import { first_path } from "./Constants";
 import { useNavigate } from "react-router-dom";
 export const UpcommingMovies = () => {
-  const { data =[] } = useGetUpCommingMoviesQuery();
+  const { data =[] ,isLoading} = useGetUpCommingMoviesQuery();
   const navigate = useNavigate();
   const handleRedirect = (id) => {
 
     navigate(`/movies-detail/${id}`);
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <Grid item sx={{ width: 525 ,pt:2}}>
 
